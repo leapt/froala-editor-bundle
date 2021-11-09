@@ -1,4 +1,4 @@
-# LEAPTFroalaEditorBundle
+# Leapt FroalaEditor bundle
 
 [![Package version](https://img.shields.io/packagist/v/leapt/froala-editor-bundle.svg)](https://packagist.org/packages/leapt/froala-editor-bundle)
 [![Build Status](https://img.shields.io/github/workflow/status/leapt/froala-editor-bundle/Continuous%20Integration/1.x)](https://github.com/leapt/froala-editor-bundle/actions?query=workflow%3A%22Continuous+Integration%22)
@@ -8,24 +8,17 @@
 
 ## Introduction
 
-This bundle aims to easily integrate & use the Froala editor in Symfony 4.4+/5.0+.
+This bundle aims to easily integrate & use the Froala editor in Symfony 5.3+/6.0+.
 
-If you want to use it with Symfony < 4.3, see [v2 docs](https://github.com/leapt/froala-editor-bundle/tree/v2).
-v2.x is compatible with Symfony 2.x to 4.x, but some deprecations are not fixed and static files are integrated to the
-bundle.
+This bundle is a maintained fork of the [KMSFroalaEditorBundle](https://github.com/froala/KMSFroalaEditorBundle).
 
-[There's also a v3 version available](https://github.com/leapt/froala-editor-bundle/tree/v3) compatible
-with Symfony 4.3+/5.0+ but the form type options are not prefixed with `froala_`, which is the major reason for a v4
-of the bundle.
+The changelog is available here:
 
-The changelogs are available here:
-
-* [CHANGELOG-4.x.md](CHANGELOG-4.x.md)
-* [CHANGELOG-3.x.md](https://github.com/leapt/froala-editor-bundle/blob/v3/CHANGELOG-3.x.md).
+* [CHANGELOG-1.x.md](CHANGELOG-1.x.md)
 
 ## Table of Contents
 
-1. [Migration to Froala Editor bundle v4 from v3](#migration-to-froala-editor-bundle-v4-from-v3)
+1. [Migration to Leapt Froala Editor bundle from KMS](#migration-to-leapt-froala-editor-bundle-from-kms)
 1. [Installation](#installation)
     1. [Step 1: Install the bundle using composer](#step-1-install-the-bundle-using-composer)
     1. [Step 2: Add the bundle to your bundles.php](#step-2-add-the-bundle-to-your-bundlesphp)
@@ -44,31 +37,17 @@ The changelogs are available here:
     1. [Plugins](#plugins)
     1. [Concept: Image upload/manager](#concept-image-uploadmanager)
     1. [Concept: File upload](#concept-file-upload)
-    1. [Concept: Autosave](#concept-autosave)
+    1. [Concept: Autosave](#concept-auto-save)
     1. [Webpack Encore configuration](#webpack-encore-configuration)
 1. [TODO](#todo)
 1. [Licence](#licence)
 1. [Contributing](#contributing)
 
-## Migration to Froala Editor bundle v4 from v3
+## Migration to Leapt Froala Editor bundle from KMS
 
-It now supports only Symfony 4.4+ & 5.0+.
+It now supports only Symfony 5.3+ & 6.0+, and PHP >= 8.0.
 
-If you somehow override/inherit a class from the bundle, be careful as some parameter & return types have been added.
-
-All form type options must now be prefixed by `froala_`:
-
-```php
-// Before
-$builder->add('field', FroalaEditorType::class, [
-    'toolbarButtons' => [...],
-]);
-
-// After
-$builder->add('field', FroalaEditorType::class, [
-    'froala_toolbarButtons' => [...],
-]);
-```
+Replace occurrences of "kms" by "leapt" everywhere (matching case: `KMS` becomes `Leapt` & `kms` becomes `leapt`).
 
 ## Installation
 
@@ -86,7 +65,7 @@ Note: if you install the bundle using Symfony Flex & accepted the recipe, you ca
 // config/bundles.php
 return [
     //..
-    LEAPT\FroalaEditorBundle\LEAPTFroalaEditorBundle::class => ['all' => true],
+    Leapt\FroalaEditorBundle\LeaptFroalaEditorBundle::class => ['all' => true],
 ];
 ```
 
@@ -95,7 +74,7 @@ return [
 ```yaml
 # config/routes.yaml 
 leapt_froala_editor:
-    resource: '@LEAPTFroalaEditorBundle/Resources/config/routing.yml'
+    resource: '@LeaptFroalaEditorBundle/Resources/config/routing.yml'
     prefix:   /froalaeditor
 ```
 
@@ -105,7 +84,7 @@ leapt_froala_editor:
 # In config/packages/twig.yaml
 twig:
     form_themes:
-        - '@LEAPTFroalaEditor/Form/froala_widget.html.twig'
+        - '@LeaptFroalaEditor/Form/froala_widget.html.twig'
 ```
 
 ### Step 5: Configure the bundle
@@ -136,7 +115,7 @@ Example for each option type below:
 # config/packages/leapt_froala_editor.yaml
 leapt_froala_editor:
     toolbarInline: true
-    tableColors: [ "#FFFFFF", "#FF0000" ]
+    tableColors: [ '#FFFFFF', '#FF0000' ]
     saveParams: { "id" : "myEditorField" }
 ```
 
@@ -146,7 +125,7 @@ To provide a better integration with Symfony, some custom options are added, see
 # config/packages/leapt_froala_editor.yaml
 leapt_froala_editor:
     # Froala licence number if you want to use a purchased licence.
-    serialNumber: "XXXX-XXXX-XXXX"
+    serialNumber: 'XXXX-XXXX-XXXX'
 
     # Disable CodeMirror inclusion.
     includeCodeMirror: false
@@ -154,22 +133,22 @@ leapt_froala_editor:
     # Disable Font Awesome inclusion.
     includeFontAwesome: false
 
-    # Disable all bundle javascripts inclusion (not concerning CodeMirror).
-    # Usage: if you are using Grunt or other and you want to include yourself all scripts. 
+    # Disable all bundle JavaScript inclusion (not concerning CodeMirror).
+    # Usage: if you are using Grunt or Webpack or other, and you want to include yourself all scripts. 
     includeJS: false
 
     # Disable all bundle CSS inclusion (not concerning Font Awesome nor CodeMirror).
-    # Usage: if you are using Grunt or other and you want to include yourself all stylesheets. 
+    # Usage: if you are using Grunt or Webpack or other, and you want to include yourself all stylesheets. 
     includeCSS: false
 
     # Change the froala base path.
     # Useful eg. when you load it from your own public directory.
     # Defaults to "/bundles/leaptfroalaeditor/froala_editor"
-    basePath: "/my/custom/path".
+    basePath: '/my/custom/path'
 
     # Custom JS file.
     # Usage: add custom plugins/buttons...
-    customJS: "/custom/js/path"
+    customJS: '/custom/js/path'
 ```
 
 ### Step 6: Add Froala to your form
@@ -177,7 +156,7 @@ leapt_froala_editor:
 Just add a Froala type in your form:
 
 ```php
-use LEAPT\FroalaEditorBundle\Form\Type\FroalaEditorType;
+use Leapt\FroalaEditorBundle\Form\Type\FroalaEditorType;
 
 $builder->add('field', FroalaEditorType::class);
 ```
@@ -206,7 +185,7 @@ There are a few arguments/options available:
 
 * First (and only) argument (optional): the absolute path where the files will be put after download.
 Defaults to `vendor/leapt/froala-editor-bundle/src/Resources/public/froala_editor/`.
-* Option `tag`: the version of Froala that will be installed (eg. `v3.0.1`). Defaults to `master`.
+* Option `tag`: the version of Froala that will be installed (eg. `v4.0.1`). Defaults to `master`.
 * Option `clear` (no value expected, disabled by default): Allow the command to clear a previous install if the path already exists.
 
 After you launched the install command, you have to link assets, eg.:
@@ -260,7 +239,7 @@ leapt_froala_editor:
 ```
 
 ```php
-use LEAPT\FroalaEditorBundle\Form\Type\FroalaEditorType;
+use Leapt\FroalaEditorBundle\Form\Type\FroalaEditorType;
 
 $builder->add('field', FroalaEditorType::class, [
     'froala_profile' => 'profile_1',
@@ -282,7 +261,7 @@ All [Froala plugins](https://www.froala.com/wysiwyg-editor/docs/plugins) are ena
 # config/packages/leapt_froala_editor.yaml
 leapt_froala_editor:
     # Disable some plugins.
-    pluginsDisabled: [ "save", "fullscreen" ]
+    pluginsDisabled: [ 'save', 'fullscreen' ]
 ```
 ... or chose only plugins to enable:
 
@@ -290,7 +269,7 @@ leapt_froala_editor:
 # config/packages/leapt_froala_editor.yaml
 leapt_froala_editor:
     # Enable only some plugins.
-    pluginsEnabled: [ "image", "file" ]
+    pluginsEnabled: [ 'image', 'file' ]
 ```
 
 Plugins can be enabled/disabled for each Froala instance by passing the same array in the form builder.
@@ -308,12 +287,12 @@ To provide a better integration with Symfony, some custom options are added, see
 leapt_froala_editor:
     # The image upload folder in your /web directory.
     # Default: "/upload".
-    imageUploadFolder: "/my/upload/folder"
+    imageUploadFolder: '/my/upload/folder'
 
     # The image upload URL base.
-    # Usage: if you are using URL rewritting for your assets.
+    # Usage: if you are using URL rewriting for your assets.
     # Default: same value as provided as folder.
-    imageUploadPath: "/my/upload/path"
+    imageUploadPath: '/my/upload/path'
 ```
 
 ### Concept: File upload
@@ -329,26 +308,26 @@ To provide a better integration with Symfony, some custom options are added, see
 leapt_froala_editor:
     # The file upload folder in your /web directory.
     # Default: "/upload".
-    fileUploadFolder: "/my/upload/folder"
+    fileUploadFolder: '/my/upload/folder'
 
     # The file upload URL base.
     # Usage: if you are using URL rewritting for your assets.
     # Default: same value as provided as folder.
-    fileUploadPath: "/my/upload/path"
+    fileUploadPath: '/my/upload/path'
 
     # Your public directory, from the root directory.
     # Default: "/public"
-    publicDir: "/home"
+    publicDir: '/home'
 ```
 
-### Concept: Autosave
+### Concept: Auto-save
 
-The [Froala autosave concept](https://www.froala.com/wysiwyg-editor/docs/concepts/save/autosave) to automatically request a save action on your server is working, just enter the correct options in your configuration file:
+The [Froala auto-save concept](https://www.froala.com/wysiwyg-editor/docs/concepts/save/autosave) to automatically request a save action on your server is working, just enter the correct options in your configuration file:
 
 ```yaml
 # config/packages/leapt_froala_editor.yaml
 leapt_froala_editor:
-    saveURL: "my_save_route"
+    saveURL: 'my_save_route'
     saveInterval: 2500
     saveParam: "content"
 ```
