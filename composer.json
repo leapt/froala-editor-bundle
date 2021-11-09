@@ -17,12 +17,12 @@
     "require": {
         "php": "^8.0",
         "ext-zip": "*",
-        "doctrine/inflector": "^1.4|^2.0",
         "symfony/asset": "^4.4|^5.0",
         "symfony/console": "^4.4|^5.0",
         "symfony/framework-bundle": "^4.4|^5.0",
         "symfony/form": "^4.4|^5.0",
         "symfony/http-client": "^4.4|^5.0",
+        "symfony/string": "^5.3",
         "symfony/twig-bundle": "^4.4|^5.0",
         "twig/twig": "^1.1|^2.0|^3.0"
     },
@@ -33,6 +33,11 @@
         "symfony/yaml": "^4.4|^5.0"
     },
     "scripts": {
+        "ci": [
+            "@cs:dry",
+            "@phpstan",
+            "vendor/bin/phpunit"
+        ],
         "cs:dry": "php-cs-fixer fix --diff --dry-run --no-interaction --ansi",
         "cs:fix": "php-cs-fixer fix --ansi",
         "phpstan": "vendor/bin/phpstan analyse --ansi"

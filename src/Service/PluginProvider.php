@@ -2,10 +2,7 @@
 
 namespace KMS\FroalaEditorBundle\Service;
 
-use Doctrine\Inflector\CachedWordInflector;
-use Doctrine\Inflector\Inflector;
-use Doctrine\Inflector\Rules\English;
-use Doctrine\Inflector\RulesetInflector;
+use Symfony\Component\String\UnicodeString;
 
 class PluginProvider
 {
@@ -13,11 +10,6 @@ class PluginProvider
     public const KEY_FOLDER = 'folder';
     public const VALUE_PLUGINS = 'plugins';
     public const VALUE_THIRD_PARTY = 'third_party';
-
-    /**
-     * @var Inflector
-     */
-    protected $inflector;
 
     /**
      * Can be easier but can handle further configurations.
@@ -65,18 +57,6 @@ class PluginProvider
             'font_awesome'        => [self::KEY_CSS => 1, self::KEY_FOLDER => self::VALUE_THIRD_PARTY],
             'image_tui'           => [self::KEY_CSS => 1, self::KEY_FOLDER => self::VALUE_THIRD_PARTY],
         ];
-
-    public function __construct()
-    {
-        $this->inflector = new Inflector(
-            new CachedWordInflector(new RulesetInflector(
-                English\Rules::getSingularRuleset()
-            )),
-            new CachedWordInflector(new RulesetInflector(
-                English\Rules::getPluralRuleset()
-            ))
-        );
-    }
 
     public function obtainArrPluginToInclude(array $enabledPlugins, array $disabledPlugins): array
     {
@@ -131,7 +111,7 @@ class PluginProvider
         $arrPlugin = [];
 
         foreach ($plugins as $plugin) {
-            $arrPlugin[] = $this->inflector->camelize($plugin);
+            $arrPlugin[] = (new UnicodeString($plugin))->camel()->toString();
         }
 
         return $arrPlugin;
