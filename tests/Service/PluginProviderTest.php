@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class PluginProviderTest extends TestCase
 {
-    /**
-     * @var PluginProvider
-     */
-    private $provider;
+    private PluginProvider $provider;
 
     protected function setUp(): void
     {
@@ -21,6 +18,6 @@ final class PluginProviderTest extends TestCase
 
     public function testObtainArrPluginCamelized(): void
     {
-        static::assertSame(['paragraphFormat'], $this->provider->obtainArrPluginCamelized(['paragraph_format']));
+        self::assertSame(['paragraphFormat'], $this->provider->obtainArrPluginCamelized(['paragraph_format']));
     }
 }

@@ -18,32 +18,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FroalaEditorType extends AbstractType
 {
-    /**
-     * @var ParameterBagInterface
-     */
-    private $parameterBag;
-
-    /**
-     * @var OptionManager
-     */
-    private $optionManager;
-
-    /**
-     * @var PluginProvider
-     */
-    private $pluginProvider;
-
-    public function __construct(ParameterBagInterface $parameterBag, OptionManager $optionManager, PluginProvider $pluginProvider)
-    {
-        $this->parameterBag = $parameterBag;
-        $this->optionManager = $optionManager;
-        $this->pluginProvider = $pluginProvider;
+    public function __construct(
+        private ParameterBagInterface $parameterBag,
+        private OptionManager $optionManager,
+        private PluginProvider $pluginProvider,
+    ) {
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         foreach ($options as $key => $option) {
-            if (0 !== strpos($key, 'froala_')) {
+            if (!str_starts_with($key, 'froala_')) {
                 continue;
             }
             $builder->setAttribute($key, $option);
@@ -53,7 +38,7 @@ class FroalaEditorType extends AbstractType
     public function buildView(FormView $view, FormInterface $form, array $options): void
     {
         $options = array_filter($options, static function ($key) {
-            return strpos($key, 'froala_') === 0;
+            return str_starts_with($key, 'froala_');
         }, \ARRAY_FILTER_USE_KEY);
 
         $arrKey = UConfiguration::getArrOption();
@@ -64,8 +49,8 @@ class FroalaEditorType extends AbstractType
         $arrEvent = $options['froala_events'] ?? [];
         $profile = $options['froala_profile'] ?? null;
 
-        if ($profile && $this->parameterBag->has(Configuration::$NODE_ROOT . '.profiles')) {
-            $profiles = $this->parameterBag->get(Configuration::$NODE_ROOT . '.profiles');
+        if ($profile && $this->parameterBag->has(Configuration::NODE_ROOT . '.profiles')) {
+            $profiles = $this->parameterBag->get(Configuration::NODE_ROOT . '.profiles');
 
             if (\array_key_exists($profile, $profiles)) {
                 $profileConfig = $profiles[$profile];
@@ -111,8 +96,8 @@ class FroalaEditorType extends AbstractType
         foreach (UConfiguration::getArrOptionAll() as $option) {
             $optionName = 'froala_' . $option;
             // If defined in config file, set default value to form, else set option as available.
-            if ($this->parameterBag->has(Configuration::$NODE_ROOT . '.' . $option)) {
-                $arrDefault[$optionName] = $this->parameterBag->get(Configuration::$NODE_ROOT . '.' . $option);
+            if ($this->parameterBag->has(Configuration::NODE_ROOT . '.' . $option)) {
+                $arrDefault[$optionName] = $this->parameterBag->get(Configuration::NODE_ROOT . '.' . $option);
             } else {
                 $arrDefined[] = $optionName;
             }

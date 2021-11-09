@@ -6,9 +6,9 @@ namespace Leapt\FroalaEditorBundle\Utility;
 
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 
-abstract class UConfiguration
+final class UConfiguration
 {
-    public static $OPTIONS_BOOLEAN = [
+    public const OPTIONS_BOOLEAN = [
         'attribution'                    => null,
         'autofocus'                      => null,
         'charCounterCount'               => null,
@@ -82,14 +82,14 @@ abstract class UConfiguration
         'wordPasteModal'                 => null,
     ];
 
-    public static $OPTIONS_BOOLEAN_CUSTOM = [
+    public const OPTIONS_BOOLEAN_CUSTOM = [
         'includeJS'          => true,
         'includeCSS'         => true,
         'includeFontAwesome' => true,
         'includeCodeMirror'  => true,
     ];
 
-    public static $OPTIONS_INTEGER = [
+    public const OPTIONS_INTEGER = [
         'charCounterMax'           => null,
         'colorsStep'               => null,
         'emoticonsStep'            => null,
@@ -119,7 +119,7 @@ abstract class UConfiguration
         'zIndex'                   => null,
     ];
 
-    public static $OPTIONS_STRING = [
+    public const OPTIONS_STRING = [
         'aviaryKey'                => null,
         'colorsDefaultTab'         => null,
         'direction'                => null,
@@ -164,7 +164,7 @@ abstract class UConfiguration
         'width'                    => null,
     ];
 
-    public static $OPTIONS_STRING_CUSTOM = [
+    public const OPTIONS_STRING_CUSTOM = [
         'customJS'          => null,
         'basePath'          => '/bundles/leaptfroalaeditor/froala_editor',
         'imageUploadFolder' => '/upload',
@@ -177,7 +177,7 @@ abstract class UConfiguration
         'publicDir'         => '/public',
     ];
 
-    public static $OPTIONS_ARRAY = [
+    public const OPTIONS_ARRAY = [
         'codeViewKeepActiveButtons' => [],
         'colorsBackground'          => [],
         'colorsText'                => [],
@@ -230,12 +230,12 @@ abstract class UConfiguration
         'wordDeniedTags'            => [],
     ];
 
-    public static $OPTIONS_ARRAY_CUSTOM = [
+    public const OPTIONS_ARRAY_CUSTOM = [
         'pluginsDisabled' => [],
         'events'          => [],
     ];
 
-    public static $OPTIONS_OBJECT = [
+    public const OPTIONS_OBJECT = [
         'aviaryOptions'            => [],
         'codeMirrorOptions'        => [],
         'codeBeautifierOptions'    => [],
@@ -268,7 +268,7 @@ abstract class UConfiguration
         'videoUploadToS3'          => [],
     ];
 
-    public static $OPTIONS_OBJECT_CUSTOM = [
+    public const OPTIONS_OBJECT_CUSTOM = [
         'imageManagerDeleteURLParams' => [],
         'imageManagerLoadURLParams'   => [],
         'imageUploadURLParams'        => [],
@@ -287,26 +287,26 @@ abstract class UConfiguration
         return array_merge(array_merge(
                 array_merge(
                     array_merge(
-                        array_keys(self::$OPTIONS_BOOLEAN),
-                        array_keys(self::$OPTIONS_INTEGER)),
-                    array_keys(self::$OPTIONS_STRING)),
-                array_keys(self::$OPTIONS_ARRAY)),
-            array_keys(self::$OPTIONS_OBJECT));
+                        array_keys(self::OPTIONS_BOOLEAN),
+                        array_keys(self::OPTIONS_INTEGER)),
+                    array_keys(self::OPTIONS_STRING)),
+                array_keys(self::OPTIONS_ARRAY)),
+            array_keys(self::OPTIONS_OBJECT));
     }
 
     public static function getArrOptionCustom(): array
     {
         return array_merge(array_merge(
                 array_merge(
-                    array_keys(self::$OPTIONS_BOOLEAN_CUSTOM),
-                    array_keys(self::$OPTIONS_STRING_CUSTOM)),
-                array_keys(self::$OPTIONS_ARRAY_CUSTOM)),
-            array_keys(self::$OPTIONS_OBJECT_CUSTOM));
+                    array_keys(self::OPTIONS_BOOLEAN_CUSTOM),
+                    array_keys(self::OPTIONS_STRING_CUSTOM)),
+                array_keys(self::OPTIONS_ARRAY_CUSTOM)),
+            array_keys(self::OPTIONS_OBJECT_CUSTOM));
     }
 
     public static function addArrOptionBoolean(NodeBuilder $nodeBuilder, bool $addDefaultValue = true): void
     {
-        $array = array_merge(self::$OPTIONS_BOOLEAN, self::$OPTIONS_BOOLEAN_CUSTOM);
+        $array = array_merge(self::OPTIONS_BOOLEAN, self::OPTIONS_BOOLEAN_CUSTOM);
 
         foreach ($array as $option => $defaultValue) {
             $nodeBuilder = $nodeBuilder->booleanNode($option);
@@ -320,7 +320,7 @@ abstract class UConfiguration
 
     public static function addArrOptionInteger(NodeBuilder $nodeBuilder, bool $addDefaultValue = true): void
     {
-        foreach (self::$OPTIONS_INTEGER as $option => $defaultValue) {
+        foreach (self::OPTIONS_INTEGER as $option => $defaultValue) {
             $nodeBuilder = $nodeBuilder->integerNode($option);
 
             if ($addDefaultValue) {
@@ -333,7 +333,7 @@ abstract class UConfiguration
 
     public static function addArrOptionString(NodeBuilder $nodeBuilder, bool $addDefaultValue = true): void
     {
-        $array = array_merge(self::$OPTIONS_STRING, self::$OPTIONS_STRING_CUSTOM);
+        $array = array_merge(self::OPTIONS_STRING, self::OPTIONS_STRING_CUSTOM);
 
         foreach ($array as $option => $defaultValue) {
             $nodeBuilder = $nodeBuilder->scalarNode($option);
@@ -346,7 +346,7 @@ abstract class UConfiguration
 
     public static function addArrOptionArray(NodeBuilder $nodeBuilder, bool $addDefaultValue = true): void
     {
-        $array = array_merge(self::$OPTIONS_ARRAY, self::$OPTIONS_ARRAY_CUSTOM);
+        $array = array_merge(self::OPTIONS_ARRAY, self::OPTIONS_ARRAY_CUSTOM);
 
         foreach ($array as $option => $defaultValue) {
             $nodeBuilder =
@@ -362,7 +362,7 @@ abstract class UConfiguration
 
     public static function addArrOptionObject(NodeBuilder $nodeBuilder, bool $addDefaultValue = true): void
     {
-        $array = array_merge(self::$OPTIONS_OBJECT, self::$OPTIONS_OBJECT_CUSTOM);
+        $array = array_merge(self::OPTIONS_OBJECT, self::OPTIONS_OBJECT_CUSTOM);
 
         foreach ($array as $option => $defaultValue) {
             $nodeBuilder =

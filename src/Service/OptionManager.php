@@ -6,16 +6,10 @@ namespace Leapt\FroalaEditorBundle\Service;
 
 use Symfony\Component\Routing\RouterInterface;
 
-class OptionManager
+final class OptionManager
 {
-    /**
-     * @var RouterInterface
-     */
-    private $router;
-
-    public function __construct(RouterInterface $router)
+    public function __construct(private RouterInterface $router)
     {
-        $this->router = $router;
     }
 
     /**

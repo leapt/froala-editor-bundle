@@ -9,10 +9,10 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\FileBag;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class MediaManager
+final class MediaManager
 {
-    public static $allowedImageFileExtensions = ['gif', 'jpeg', 'jpg', 'png'];
-    public static $allowedImageFileMimeTypes = ['image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'];
+    private const ALLOWED_IMAGE_FILE_EXTENSIONS = ['gif', 'jpeg', 'jpg', 'png'];
+    private const ALLOWED_IMAGE_FILE_MIME_TYPES = ['image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'];
 
     public function uploadImage(FileBag $fileBag, string $rootDir, string $publicDir, string $basePath, string $configuredFolder, string $requestPath): JsonResponse
     {
@@ -39,7 +39,7 @@ class MediaManager
         $finder->files()->in($folder);
 
         foreach ($finder as $file) {
-            if (!\in_array($file->getExtension(), static::$allowedImageFileExtensions, true)) {
+            if (!\in_array($file->getExtension(), self::ALLOWED_IMAGE_FILE_EXTENSIONS, true)) {
                 continue;
             }
             $arrImage[] = ['url' => $path . $file->getFilename(), 'thumb' => $path . $file->getFilename()];
@@ -97,7 +97,7 @@ class MediaManager
         }
 
         // Check image type.
-        if ('image' === $specificType && (!\in_array($file->guessExtension(), static::$allowedImageFileExtensions, true) || !\in_array($file->getMimeType(), static::$allowedImageFileMimeTypes, true))) {
+        if ('image' === $specificType && (!\in_array($file->guessExtension(), self::ALLOWED_IMAGE_FILE_EXTENSIONS, true) || !\in_array($file->getMimeType(), self::ALLOWED_IMAGE_FILE_MIME_TYPES, true))) {
             $response->setData([
                 'error' => 'File not supported.',
             ]);

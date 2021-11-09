@@ -12,11 +12,11 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
-    public static $NODE_ROOT = 'leapt_froala_editor';
+    public const NODE_ROOT = 'leapt_froala_editor';
 
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder(self::$NODE_ROOT);
+        $treeBuilder = new TreeBuilder(self::NODE_ROOT);
         /** @var ArrayNodeDefinition $rootNode */
         $rootNode = $treeBuilder->getRootNode();
 

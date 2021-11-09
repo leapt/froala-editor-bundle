@@ -10,22 +10,10 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-class FroalaExtension extends AbstractExtension
+final class FroalaExtension extends AbstractExtension
 {
-    /**
-     * @var ParameterBagInterface
-     */
-    protected $parameterBag;
-
-    /**
-     * @var Packages
-     */
-    protected $packages;
-
-    public function __construct(ParameterBagInterface $parameterBag, Packages $packages)
+    public function __construct(private ParameterBagInterface $parameterBag, private Packages $packages)
     {
-        $this->parameterBag = $parameterBag;
-        $this->packages = $packages;
     }
 
     public function getFunctions(): array
@@ -35,16 +23,13 @@ class FroalaExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * Display Froala HTML.
-     */
     public function froalaDisplay(?string $html): string
     {
         $str = '';
-        $includeCSS = $this->parameterBag->get(Configuration::$NODE_ROOT . '.includeCSS');
+        $includeCSS = $this->parameterBag->get(Configuration::NODE_ROOT . '.includeCSS');
 
         if ($includeCSS) {
-            $basePath = $this->parameterBag->get(Configuration::$NODE_ROOT . '.basePath');
+            $basePath = $this->parameterBag->get(Configuration::NODE_ROOT . '.basePath');
             $url = $this->packages->getUrl(trim($basePath, '/') . '/' . 'css/froala_style.min.css');
             $str .= '<link href="' . $url . '" rel="stylesheet" type="text/css" />';
         }

@@ -23,7 +23,7 @@ final class FroalaEditorTypeTest extends TestCase
         $form = $this->getForm();
         $view = $form->createView();
 
-        static::assertSame('en', $view->vars['froala_arrOption']['language']);
+        self::assertSame('en', $view->vars['froala_arrOption']['language']);
     }
 
     public function testValidProfile(): void
@@ -31,7 +31,7 @@ final class FroalaEditorTypeTest extends TestCase
         $form = $this->getForm(['froala_profile' => 'profile1']);
         $view = $form->createView();
 
-        static::assertSame('fr', $view->vars['froala_arrOption']['language']);
+        self::assertSame('fr', $view->vars['froala_arrOption']['language']);
     }
 
     public function testNonExistentProfile(): void
@@ -46,8 +46,8 @@ final class FroalaEditorTypeTest extends TestCase
         $form = $this->getForm(['froala_fontAwesomeSets' => ['first' => 'test']]);
         $view = $form->createView();
 
-        static::assertArrayHasKey('fontAwesomeSets', $view->vars['froala_arrOption']);
-        static::assertSame(['first' => 'test'], $view->vars['froala_arrOption']['fontAwesomeSets']);
+        self::assertArrayHasKey('fontAwesomeSets', $view->vars['froala_arrOption']);
+        self::assertSame(['first' => 'test'], $view->vars['froala_arrOption']['fontAwesomeSets']);
     }
 
     public function testInvalidOption(): void
@@ -78,21 +78,21 @@ final class FroalaEditorTypeTest extends TestCase
     private function getParameterBag(): ParameterBag
     {
         $array = array_merge(
-            UConfiguration::$OPTIONS_STRING, UConfiguration::$OPTIONS_STRING_CUSTOM,
-            UConfiguration::$OPTIONS_BOOLEAN, UConfiguration::$OPTIONS_BOOLEAN_CUSTOM,
-            UConfiguration::$OPTIONS_ARRAY, UConfiguration::$OPTIONS_ARRAY_CUSTOM,
-            UConfiguration::$OPTIONS_OBJECT, UConfiguration::$OPTIONS_OBJECT_CUSTOM,
-            UConfiguration::$OPTIONS_INTEGER
+            UConfiguration::OPTIONS_STRING, UConfiguration::OPTIONS_STRING_CUSTOM,
+            UConfiguration::OPTIONS_BOOLEAN, UConfiguration::OPTIONS_BOOLEAN_CUSTOM,
+            UConfiguration::OPTIONS_ARRAY, UConfiguration::OPTIONS_ARRAY_CUSTOM,
+            UConfiguration::OPTIONS_OBJECT, UConfiguration::OPTIONS_OBJECT_CUSTOM,
+            UConfiguration::OPTIONS_INTEGER
         );
         $parameters = [];
 
         foreach ($array as $option => $defaultValue) {
-            $parameters[Configuration::$NODE_ROOT . '.' . $option] = $defaultValue;
+            $parameters[Configuration::NODE_ROOT . '.' . $option] = $defaultValue;
         }
 
         // Define some options for testing
-        $parameters[Configuration::$NODE_ROOT . '.' . 'language'] = 'en';
-        $parameters[Configuration::$NODE_ROOT . '.' . 'profiles'] = ['profile1' => ['language' => 'fr']];
+        $parameters[Configuration::NODE_ROOT . '.' . 'language'] = 'en';
+        $parameters[Configuration::NODE_ROOT . '.' . 'profiles'] = ['profile1' => ['language' => 'fr']];
 
         return new ParameterBag($parameters);
     }
