@@ -56,6 +56,9 @@ final class FroalaEditorTypeTest extends TestCase
         $this->getForm(['froala_unknown_option' => 'test']);
     }
 
+    /**
+     * @param array<string, string|array<string, string>> $options
+     */
     private function getForm(array $options = []): FormInterface
     {
         $router = $this->getMockBuilder(RouterInterface::class)->getMock();

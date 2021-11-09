@@ -72,12 +72,10 @@ class InstallCommand extends Command
                 $explodedPath = explode('/', $filename, 2);
                 $realFilePath = $explodedPath[1];
 
-                if (!empty($explodedPath)) {
-                    if ('/' === substr($filename, -1)) {
-                        $fileSystem->mkdir($outputPath . '/' . $realFilePath);
-                    } else {
-                        copy($zipFile, $outputPath . '/' . $realFilePath);
-                    }
+                if (str_ends_with($filename, '/')) {
+                    $fileSystem->mkdir($outputPath . '/' . $realFilePath);
+                } else {
+                    copy($zipFile, $outputPath . '/' . $realFilePath);
                 }
             }
             $zip->close();
