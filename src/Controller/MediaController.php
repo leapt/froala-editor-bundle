@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Leapt\FroalaEditorBundle\Controller;
 
 use Leapt\FroalaEditorBundle\Service\MediaManager;

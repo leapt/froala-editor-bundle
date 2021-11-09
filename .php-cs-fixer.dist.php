@@ -36,6 +36,7 @@ return (new PhpCsFixer\Config())
             'identical' => true,
             'less_and_greater' => true,
         ],
+        'declare_strict_types' => true,
     ])
     ->setFinder($finder)
     ->setCacheFile(__DIR__.'/.php_cs.cache')

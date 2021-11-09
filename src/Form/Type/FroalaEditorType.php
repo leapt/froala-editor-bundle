@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Leapt\FroalaEditorBundle\Form\Type;
 
 use Leapt\FroalaEditorBundle\DependencyInjection\Configuration;

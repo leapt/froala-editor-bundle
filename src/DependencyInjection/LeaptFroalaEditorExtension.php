@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Leapt\FroalaEditorBundle\DependencyInjection;
 
 use Leapt\FroalaEditorBundle\Utility\UConfiguration;
