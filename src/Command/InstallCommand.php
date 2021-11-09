@@ -1,6 +1,6 @@
 <?php
 
-namespace KMS\FroalaEditorBundle\Command;
+namespace Leapt\FroalaEditorBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

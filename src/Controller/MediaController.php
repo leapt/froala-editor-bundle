@@ -1,8 +1,8 @@
 <?php
 
-namespace KMS\FroalaEditorBundle\Controller;
+namespace Leapt\FroalaEditorBundle\Controller;
 
-use KMS\FroalaEditorBundle\Service\MediaManager;
+use Leapt\FroalaEditorBundle\Service\MediaManager;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

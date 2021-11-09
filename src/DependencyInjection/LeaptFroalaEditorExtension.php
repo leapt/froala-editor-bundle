@@ -1,14 +1,14 @@
 <?php
 
-namespace KMS\FroalaEditorBundle\DependencyInjection;
+namespace Leapt\FroalaEditorBundle\DependencyInjection;
 
-use KMS\FroalaEditorBundle\Utility\UConfiguration;
+use Leapt\FroalaEditorBundle\Utility\UConfiguration;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class KMSFroalaEditorExtension extends Extension
+class LeaptFroalaEditorExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {

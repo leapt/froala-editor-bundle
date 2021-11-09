@@ -1,8 +1,8 @@
 <?php
 
-namespace KMS\FroalaEditorBundle\DependencyInjection;
+namespace Leapt\FroalaEditorBundle\DependencyInjection;
 
-use KMS\FroalaEditorBundle\Utility\UConfiguration;
+use Leapt\FroalaEditorBundle\Utility\UConfiguration;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -10,7 +10,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
-    public static $NODE_ROOT = 'kms_froala_editor';
+    public static $NODE_ROOT = 'leapt_froala_editor';
 
     public function getConfigTreeBuilder(): TreeBuilder
     {

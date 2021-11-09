@@ -1,6 +1,6 @@
 <?php
 
-namespace KMS\FroalaEditorBundle\Utility;
+namespace Leapt\FroalaEditorBundle\Utility;
 
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 
@@ -126,7 +126,7 @@ abstract class UConfiguration
         'entities'                 => null,
         'fileUploadMethod'         => null,
         'fileUploadParam'          => null,
-        'fileUploadURL'            => 'kms_froala_editor_upload_file',
+        'fileUploadURL'            => 'leapt_froala_editor_upload_file',
         'filesManagerUploadURL'    => null,
         'fontAwesomeTemplate'      => null,
         'fontSizeUnit'             => null,
@@ -137,13 +137,13 @@ abstract class UConfiguration
         'imageDefaultAlign'        => null,
         'imageDefaultDisplay'      => null,
         'imageManagerDeleteMethod' => null,
-        'imageManagerDeleteURL'    => 'kms_froala_editor_delete_image',
+        'imageManagerDeleteURL'    => 'leapt_froala_editor_delete_image',
         'imageManagerLoadMethod'   => null,
-        'imageManagerLoadURL'      => 'kms_froala_editor_load_images',
+        'imageManagerLoadURL'      => 'leapt_froala_editor_load_images',
         'imageManagerPreloader'    => null,
         'imageUploadMethod'        => null,
         'imageUploadParam'         => null,
-        'imageUploadURL'           => 'kms_froala_editor_upload_image',
+        'imageUploadURL'           => 'leapt_froala_editor_upload_image',
         'language'                 => null,
         'linkAutoPrefix'           => null,
         'placeholderText'          => null,
@@ -158,13 +158,13 @@ abstract class UConfiguration
         'videoDefaultDisplay'      => null,
         'videoUploadMethod'        => null,
         'videoUploadParam'         => null,
-        'videoUploadURL'           => 'kms_froala_editor_upload_video',
+        'videoUploadURL'           => 'leapt_froala_editor_upload_video',
         'width'                    => null,
     ];
 
     public static $OPTIONS_STRING_CUSTOM = [
         'customJS'          => null,
-        'basePath'          => '/bundles/kmsfroalaeditor/froala_editor',
+        'basePath'          => '/bundles/leaptfroalaeditor/froala_editor',
         'imageUploadFolder' => '/upload',
         'imageUploadPath'   => null,
         'fileUploadFolder'  => '/upload',

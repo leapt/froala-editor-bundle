@@ -1,8 +1,8 @@
 <?php
 
-namespace KMS\FroalaEditorBundle\Twig;
+namespace Leapt\FroalaEditorBundle\Twig;
 
-use KMS\FroalaEditorBundle\DependencyInjection\Configuration;
+use Leapt\FroalaEditorBundle\DependencyInjection\Configuration;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Twig\Extension\AbstractExtension;

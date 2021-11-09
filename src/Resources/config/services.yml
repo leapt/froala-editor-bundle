@@ -1,38 +1,38 @@
 services:
     # Command.
-    KMS\FroalaEditorBundle\Command\InstallCommand:
+    Leapt\FroalaEditorBundle\Command\InstallCommand:
         tags:
             - { name: "console.command", command: "froala:install" }
 
     # Controller.
-    KMS\FroalaEditorBundle\Controller\MediaController:
-        arguments: [ "@kms_froala_editor.media_manager", "@kernel" ]
+    Leapt\FroalaEditorBundle\Controller\MediaController:
+        arguments: [ "@leapt_froala_editor.media_manager", "@kernel" ]
         public: true
 
     # Form type.
-    kms_froala_editor.form.type:
-        class: "KMS\\FroalaEditorBundle\\Form\\Type\\FroalaEditorType"
-        arguments: [ "@parameter_bag", "@kms_froala_editor.option_manager", "@kms_froala_editor.plugin_provider" ]
+    leapt_froala_editor.form.type:
+        class: "Leapt\\FroalaEditorBundle\\Form\\Type\\FroalaEditorType"
+        arguments: [ "@parameter_bag", "@leapt_froala_editor.option_manager", "@leapt_froala_editor.plugin_provider" ]
         tags:
             - { name: "form.type" }
 
     # Option manager.
-    kms_froala_editor.option_manager:
-        class: "KMS\\FroalaEditorBundle\\Service\\OptionManager"
+    leapt_froala_editor.option_manager:
+        class: "Leapt\\FroalaEditorBundle\\Service\\OptionManager"
         arguments: [ "@router" ]
 
     # Plugin provider.
-    kms_froala_editor.plugin_provider:
-        class: "KMS\\FroalaEditorBundle\\Service\\PluginProvider"
+    leapt_froala_editor.plugin_provider:
+        class: "Leapt\\FroalaEditorBundle\\Service\\PluginProvider"
 
     # Media manager.
-    kms_froala_editor.media_manager:
-        class: "KMS\\FroalaEditorBundle\\Service\\MediaManager"
+    leapt_froala_editor.media_manager:
+        class: "Leapt\\FroalaEditorBundle\\Service\\MediaManager"
         public: true
 
     # Twig extension.
-    kms_froala_editor.froala_extension:
-        class: "KMS\\FroalaEditorBundle\\Twig\\FroalaExtension"
+    leapt_froala_editor.froala_extension:
+        class: "Leapt\\FroalaEditorBundle\\Twig\\FroalaExtension"
         arguments: [ "@parameter_bag", "@assets.packages" ]
         tags:
             - { name: twig.extension }

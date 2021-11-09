@@ -34,7 +34,7 @@
     {% endif %}
 
     {% if froala_includeJS %}
-        <script type="text/javascript"  src="{{ asset( "bundles/kmsfroalaeditor/misc.js" ) }}"></script>
+        <script type="text/javascript"  src="{{ asset( "bundles/leaptfroalaeditor/misc.js" ) }}"></script>
         <script type="text/javascript"  src="{{ asset( froala_basePath ~ 'js/froala_editor.min.js' ) }}"></script>
 
         <!--[if lt IE 9]>
@@ -63,7 +63,7 @@
                     key : "{{ froala_serialNumber }}",
                 {% endif %}
                 {% for option, value in froala_arrOption %}
-                    {{ option }} : {% include "@KMSFroalaEditor/Form/value.html.twig" %}
+                    {{ option }} : {% include "@LeaptFroalaEditor/Form/value.html.twig" %}
                 {% endfor %}
 
                 events: {

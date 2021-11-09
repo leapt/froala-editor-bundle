@@ -1,11 +1,11 @@
 <?php
 
-namespace KMS\FroalaEditorBundle\Form\Type;
+namespace Leapt\FroalaEditorBundle\Form\Type;
 
-use KMS\FroalaEditorBundle\DependencyInjection\Configuration;
-use KMS\FroalaEditorBundle\Service\OptionManager;
-use KMS\FroalaEditorBundle\Service\PluginProvider;
-use KMS\FroalaEditorBundle\Utility\UConfiguration;
+use Leapt\FroalaEditorBundle\DependencyInjection\Configuration;
+use Leapt\FroalaEditorBundle\Service\OptionManager;
+use Leapt\FroalaEditorBundle\Service\PluginProvider;
+use Leapt\FroalaEditorBundle\Utility\UConfiguration;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;

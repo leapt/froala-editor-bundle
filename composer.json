@@ -1,7 +1,7 @@
 {
-    "name": "kms/froala-editor-bundle",
+    "name": "leapt/froala-editor-bundle",
     "type": "symfony-bundle",
-    "description": "Provides a Froala editor integration for Symfony 4 & 5.",
+    "description": "Provides a Froala editor integration for Symfony 5 & 6.",
     "keywords": [ "froala", "editor", "wysiwyg" ],
     "license": "MIT",
     "authors": [
@@ -12,6 +12,10 @@
         {
             "name": "Stefan Neculai",
             "email": "stefan.neculai@gmail.com"
+        },
+        {
+            "name": "Jonathan Scheiber",
+            "homepage": "https://github.com/jmsche"
         }
     ],
     "require": {
@@ -44,12 +48,12 @@
     },
     "autoload": {
         "psr-4": {
-            "KMS\\FroalaEditorBundle\\": "src/"
+            "Leapt\\FroalaEditorBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "KMS\\FroalaEditorBundle\\Tests\\": "tests/"
+            "Leapt\\FroalaEditorBundle\\Tests\\": "tests/"
         }
     }
 }

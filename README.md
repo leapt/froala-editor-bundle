@@ -1,27 +1,27 @@
-# KMSFroalaEditorBundle
+# LEAPTFroalaEditorBundle
 
-[![Package version](https://img.shields.io/packagist/v/kms/froala-editor-bundle.svg)](https://packagist.org/packages/kms/froala-editor-bundle)
-[![Build Status](https://img.shields.io/github/workflow/status/froala/KMSFroalaEditorBundle/Continuous%20Integration/master)](https://github.com/froala/KMSFroalaEditorBundle/actions?query=workflow%3A%22Continuous+Integration%22)
-[![Downloads](https://img.shields.io/packagist/dt/kms/froala-editor-bundle.svg)](https://packagist.org/packages/kms/froala-editor-bundle)
-[![PHP Version](https://img.shields.io/packagist/php-v/kms/froala-editor-bundle.svg)](https://packagist.org/packages/kms/froala-editor-bundle)
-[![Licence](https://img.shields.io/packagist/l/kms/froala-editor-bundle.svg)](https://packagist.org/packages/kms/froala-editor-bundle)
+[![Package version](https://img.shields.io/packagist/v/leapt/froala-editor-bundle.svg)](https://packagist.org/packages/leapt/froala-editor-bundle)
+[![Build Status](https://img.shields.io/github/workflow/status/leapt/froala-editor-bundle/Continuous%20Integration/1.x)](https://github.com/leapt/froala-editor-bundle/actions?query=workflow%3A%22Continuous+Integration%22)
+[![Downloads](https://img.shields.io/packagist/dt/leapt/froala-editor-bundle.svg)](https://packagist.org/packages/leapt/froala-editor-bundle)
+[![PHP Version](https://img.shields.io/packagist/php-v/leapt/froala-editor-bundle.svg)](https://packagist.org/packages/leapt/froala-editor-bundle)
+[![Licence](https://img.shields.io/packagist/l/leapt/froala-editor-bundle.svg)](https://packagist.org/packages/leapt/froala-editor-bundle)
 
 ## Introduction
 
 This bundle aims to easily integrate & use the Froala editor in Symfony 4.4+/5.0+.
 
-If you want to use it with Symfony < 4.3, see [v2 docs](https://github.com/froala/KMSFroalaEditorBundle/tree/v2).
+If you want to use it with Symfony < 4.3, see [v2 docs](https://github.com/leapt/froala-editor-bundle/tree/v2).
 v2.x is compatible with Symfony 2.x to 4.x, but some deprecations are not fixed and static files are integrated to the
 bundle.
 
-[There's also a v3 version available](https://github.com/froala/KMSFroalaEditorBundle/tree/v3) compatible
+[There's also a v3 version available](https://github.com/leapt/froala-editor-bundle/tree/v3) compatible
 with Symfony 4.3+/5.0+ but the form type options are not prefixed with `froala_`, which is the major reason for a v4
 of the bundle.
 
 The changelogs are available here:
 
 * [CHANGELOG-4.x.md](CHANGELOG-4.x.md)
-* [CHANGELOG-3.x.md](https://github.com/froala/KMSFroalaEditorBundle/blob/v3/CHANGELOG-3.x.md).
+* [CHANGELOG-3.x.md](https://github.com/leapt/froala-editor-bundle/blob/v3/CHANGELOG-3.x.md).
 
 ## Table of Contents
 
@@ -75,7 +75,7 @@ $builder->add('field', FroalaEditorType::class, [
 ### Step 1: Install the bundle using composer
 
 ```bash
-composer require kms/froala-editor-bundle
+composer require leapt/froala-editor-bundle
 ```
 
 Note: if you install the bundle using Symfony Flex & accepted the recipe, you can skip steps 2 to 4.
@@ -86,7 +86,7 @@ Note: if you install the bundle using Symfony Flex & accepted the recipe, you ca
 // config/bundles.php
 return [
     //..
-    KMS\FroalaEditorBundle\KMSFroalaEditorBundle::class => ['all' => true],
+    LEAPT\FroalaEditorBundle\LEAPTFroalaEditorBundle::class => ['all' => true],
 ];
 ```
 
@@ -94,8 +94,8 @@ return [
 
 ```yaml
 # config/routes.yaml 
-kms_froala_editor:
-    resource: '@KMSFroalaEditorBundle/Resources/config/routing.yml'
+leapt_froala_editor:
+    resource: '@LEAPTFroalaEditorBundle/Resources/config/routing.yml'
     prefix:   /froalaeditor
 ```
 
@@ -105,7 +105,7 @@ kms_froala_editor:
 # In config/packages/twig.yaml
 twig:
     form_themes:
-        - '@KMSFroalaEditor/Form/froala_widget.html.twig'
+        - '@LEAPTFroalaEditor/Form/froala_widget.html.twig'
 ```
 
 ### Step 5: Configure the bundle
@@ -115,8 +115,8 @@ twig:
 First, you have to select your language, other settings are optional (see below).
 
 ```yaml
-# config/packages/kms_froala_editor.yaml 
-kms_froala_editor:
+# config/packages/leapt_froala_editor.yaml 
+leapt_froala_editor:
     language: 'nl'
 ```
 
@@ -133,8 +133,8 @@ Note that some options need some plugins (all information provided in the [Froal
 Example for each option type below:
 
 ```yaml
-# config/packages/kms_froala_editor.yaml
-kms_froala_editor:
+# config/packages/leapt_froala_editor.yaml
+leapt_froala_editor:
     toolbarInline: true
     tableColors: [ "#FFFFFF", "#FF0000" ]
     saveParams: { "id" : "myEditorField" }
@@ -143,8 +143,8 @@ kms_froala_editor:
 To provide a better integration with Symfony, some custom options are added, see the full list below: 
 
 ```yaml
-# config/packages/kms_froala_editor.yaml
-kms_froala_editor:
+# config/packages/leapt_froala_editor.yaml
+leapt_froala_editor:
     # Froala licence number if you want to use a purchased licence.
     serialNumber: "XXXX-XXXX-XXXX"
 
@@ -164,7 +164,7 @@ kms_froala_editor:
 
     # Change the froala base path.
     # Useful eg. when you load it from your own public directory.
-    # Defaults to "/bundles/kmsfroalaeditor/froala_editor"
+    # Defaults to "/bundles/leaptfroalaeditor/froala_editor"
     basePath: "/my/custom/path".
 
     # Custom JS file.
@@ -177,7 +177,7 @@ kms_froala_editor:
 Just add a Froala type in your form:
 
 ```php
-use KMS\FroalaEditorBundle\Form\Type\FroalaEditorType;
+use LEAPT\FroalaEditorBundle\Form\Type\FroalaEditorType;
 
 $builder->add('field', FroalaEditorType::class);
 ```
@@ -196,7 +196,7 @@ $builder->add('field', FroalaEditorType::class, [
 ### Step 7: Install asset files
 
 To install the asset files, there is `froala:install` command that downloads the last version available of Froala Editor
-and puts it by default in the `vendor/kms/froala-editor-bundle/src/Resources/public/froala_editor/` directory:
+and puts it by default in the `vendor/leapt/froala-editor-bundle/src/Resources/public/froala_editor/` directory:
 
 ```bash
 bin/console froala:install
@@ -205,7 +205,7 @@ bin/console froala:install
 There are a few arguments/options available:
 
 * First (and only) argument (optional): the absolute path where the files will be put after download.
-Defaults to `vendor/kms/froala-editor-bundle/src/Resources/public/froala_editor/`.
+Defaults to `vendor/leapt/froala-editor-bundle/src/Resources/public/froala_editor/`.
 * Option `tag`: the version of Froala that will be installed (eg. `v3.0.1`). Defaults to `master`.
 * Option `clear` (no value expected, disabled by default): Allow the command to clear a previous install if the path already exists.
 
@@ -250,8 +250,8 @@ You can define several configuration profiles that will be reused in your forms,
 When using a profile, the root configuration options will be used & overridden:
 
 ```yaml
-# config/packages/kms_froala_editor.yaml
-kms_froala_editor:
+# config/packages/leapt_froala_editor.yaml
+leapt_froala_editor:
     heightMax: 400
     attribution: false
     profiles:
@@ -260,7 +260,7 @@ kms_froala_editor:
 ```
 
 ```php
-use KMS\FroalaEditorBundle\Form\Type\FroalaEditorType;
+use LEAPT\FroalaEditorBundle\Form\Type\FroalaEditorType;
 
 $builder->add('field', FroalaEditorType::class, [
     'froala_profile' => 'profile_1',
@@ -279,16 +279,16 @@ In this example, `profile_1` profile will have these configuration options set:
 All [Froala plugins](https://www.froala.com/wysiwyg-editor/docs/plugins) are enabled, but if you don't need one of them, you can disable some plugins...
 
 ```yaml
-# config/packages/kms_froala_editor.yaml
-kms_froala_editor:
+# config/packages/leapt_froala_editor.yaml
+leapt_froala_editor:
     # Disable some plugins.
     pluginsDisabled: [ "save", "fullscreen" ]
 ```
 ... or chose only plugins to enable:
 
 ```yaml
-# config/packages/kms_froala_editor.yaml
-kms_froala_editor:
+# config/packages/leapt_froala_editor.yaml
+leapt_froala_editor:
     # Enable only some plugins.
     pluginsEnabled: [ "image", "file" ]
 ```
@@ -304,8 +304,8 @@ If you want to use your own uploader, you can override the configuration (if you
 To provide a better integration with Symfony, some custom options are added, see the full list below: 
 
 ```yaml
-# config/packages/kms_froala_editor.yaml
-kms_froala_editor:
+# config/packages/leapt_froala_editor.yaml
+leapt_froala_editor:
     # The image upload folder in your /web directory.
     # Default: "/upload".
     imageUploadFolder: "/my/upload/folder"
@@ -325,8 +325,8 @@ If you want to use your own uploader, you can override the configuration (if you
 To provide a better integration with Symfony, some custom options are added, see the full list below: 
 
 ```yaml
-# config/packages/kms_froala_editor.yaml
-kms_froala_editor:
+# config/packages/leapt_froala_editor.yaml
+leapt_froala_editor:
     # The file upload folder in your /web directory.
     # Default: "/upload".
     fileUploadFolder: "/my/upload/folder"
@@ -346,8 +346,8 @@ kms_froala_editor:
 The [Froala autosave concept](https://www.froala.com/wysiwyg-editor/docs/concepts/save/autosave) to automatically request a save action on your server is working, just enter the correct options in your configuration file:
 
 ```yaml
-# config/packages/kms_froala_editor.yaml
-kms_froala_editor:
+# config/packages/leapt_froala_editor.yaml
+leapt_froala_editor:
     saveURL: "my_save_route"
     saveInterval: 2500
     saveParam: "content"
@@ -356,8 +356,8 @@ kms_froala_editor:
 To provide a better integration with Symfony, some custom options are added, see the full list below: 
 
 ```yaml
-# config/packages/kms_froala_editor.yaml
-kms_froala_editor:
+# config/packages/leapt_froala_editor.yaml
+leapt_froala_editor:
     # Add some parameters to your save URL.
     # Usage: if you need parameters to generate your save action route (see save explaination below).
     # Default: null.
@@ -394,8 +394,8 @@ window.froalaDisplayError = froalaDisplayError;
 Now you can disable Froala bundle CSS/JS inclusion:
 
 ```yaml
-# config/packages/kms_froala_editor.yaml
-kms_froala_editor:
+# config/packages/leapt_froala_editor.yaml
+leapt_froala_editor:
     includeJS: false
     includeCSS: false
 ```
@@ -414,7 +414,7 @@ if you don't have a licence.
 
 ## Contributing
 
-Feel free to contribute, like sending [pull requests](https://github.com/froala/KMSFroalaEditorBundle/pulls) to add features/tests.
+Feel free to contribute, like sending [pull requests](https://github.com/leapt/froala-editor-bundle/pulls) to add features/tests.
 
 Note there are a few helpers to maintain code quality, that you can run using these commands:
 

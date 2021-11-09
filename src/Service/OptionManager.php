@@ -1,6 +1,6 @@
 <?php
 
-namespace KMS\FroalaEditorBundle\Service;
+namespace Leapt\FroalaEditorBundle\Service;
 
 use Symfony\Component\Routing\RouterInterface;
 

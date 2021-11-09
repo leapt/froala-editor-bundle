@@ -1,22 +1,22 @@
 # Image upload
-kms_froala_editor_upload_image:
+leapt_froala_editor_upload_image:
     path: /upload_image
-    controller: KMS\FroalaEditorBundle\Controller\MediaController::uploadImage
+    controller: Leapt\FroalaEditorBundle\Controller\MediaController::uploadImage
 
-kms_froala_editor_delete_image:
+leapt_froala_editor_delete_image:
     path: /delete_image
-    controller: KMS\FroalaEditorBundle\Controller\MediaController::deleteImage
+    controller: Leapt\FroalaEditorBundle\Controller\MediaController::deleteImage
 
-kms_froala_editor_load_images:
+leapt_froala_editor_load_images:
     path: /load_images
-    controller: KMS\FroalaEditorBundle\Controller\MediaController::loadImages
+    controller: Leapt\FroalaEditorBundle\Controller\MediaController::loadImages
 
 # File upload
-kms_froala_editor_upload_file:
+leapt_froala_editor_upload_file:
     path: /upload_file
-    controller: KMS\FroalaEditorBundle\Controller\MediaController::uploadFile
+    controller: Leapt\FroalaEditorBundle\Controller\MediaController::uploadFile
 
 # Video upload
-kms_froala_editor_upload_video:
+leapt_froala_editor_upload_video:
     path: /upload_video
-    controller: KMS\FroalaEditorBundle\Controller\MediaController::uploadVideo
+    controller: Leapt\FroalaEditorBundle\Controller\MediaController::uploadVideo
