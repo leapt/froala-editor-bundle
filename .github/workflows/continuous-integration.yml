@@ -1,53 +1,48 @@
-name: "Continuous Integration"
+name: Continuous Integration
 
 on:
   pull_request:
-    branches:
-      - "master"
+    branches: ['1.x']
   push:
-    branches:
-      - "master"
+    branches: ['1.x']
 
 jobs:
   phpunit:
-    name: "PHPUnit"
-    runs-on: "ubuntu-20.04"
+    name: PHPUnit (PHP ${{ matrix.php-version }} - Symfony ${{ matrix.symfony-version }})
+    runs-on: ubuntu-20.04
+    env:
+      SYMFONY_REQUIRE: ${{ matrix.symfony-version }}
 
     strategy:
       matrix:
         php-version:
-          - "7.2"
-          - "7.3"
-          - "7.4"
-          - "8.0"
+          - '8.0'
+          - '8.1'
+        symfony-version:
+          - '5.3.*'
 
     steps:
-      - name: "Checkout"
-        uses: "actions/checkout@v2"
+      - name: Checkout code
+        uses: actions/checkout@v2
         with:
           fetch-depth: 2
 
-      - name: "Install PHP"
-        uses: "shivammathur/setup-php@v2"
+      - name: Install PHP with pcov
+        uses: shivammathur/setup-php@v2
         with:
-          php-version: "${{ matrix.php-version }}"
+          coverage: pcov
+          php-version: ${{ matrix.php-version }}
           extensions: zip
 
-      - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v2"
-        with:
-          path: "~/.composer/cache"
-          key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-locked-"
+      - name: Install Symfony Flex
+        run: composer global require --no-progress --no-scripts --no-plugins symfony/flex
 
-      - name: "Update dependencies with composer (PHP < 8.0)"
-        run: "composer update --no-interaction --no-progress --no-suggest"
-        if: matrix.php-version != 8.0
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v1
 
-      # Required as php-cs-fixer can't be used yet on PHP 8.0
-      - name: "Update dependencies with composer (PHP 8.0)"
-        run: "composer update --no-interaction --no-progress --no-suggest --ignore-platform-req=php"
-        if: matrix.php-version == 8.0
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
-      - name: "Run PHPUnit"
-        run: "vendor/bin/simple-phpunit"
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v2
+        if: matrix.php-version == '8.0' && matrix.symfony-version == '5.3.*'

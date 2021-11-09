@@ -52,7 +52,7 @@ class FroalaEditorType extends AbstractType
     {
         $options = array_filter($options, static function ($key) {
             return strpos($key, 'froala_') === 0;
-        }, ARRAY_FILTER_USE_KEY);
+        }, \ARRAY_FILTER_USE_KEY);
 
         $arrKey = UConfiguration::getArrOption();
         $arrKeyCustom = UConfiguration::getArrOptionCustom();

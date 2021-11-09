@@ -421,5 +421,5 @@ Note there are a few helpers to maintain code quality, that you can run using th
 ```bash
 composer cs:dry # Code style check
 composer phpstan # Static analysis
-vendor/bin/simple-phpunit # Run tests
+vendor/bin/phpunit # Run tests
 ```
