@@ -75,7 +75,7 @@ return [
 ```yaml
 # config/routes.yaml 
 leapt_froala_editor:
-    resource: '@LeaptFroalaEditorBundle/Resources/config/routing.yml'
+    resource: '@LeaptFroalaEditorBundle/Resources/config/routing.php'
     prefix:   /froalaeditor
 ```
 

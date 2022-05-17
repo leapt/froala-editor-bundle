@@ -17,8 +17,8 @@ class LeaptFroalaEditorExtension extends Extension
         $configuration = new Configuration();
         $arrConfig = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services.yml');
+        $loader = new Loader\PhpFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader->load('services.php');
 
         $this->loadConfig($container, $arrConfig);
     }
