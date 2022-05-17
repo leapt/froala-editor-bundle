@@ -1,0 +1,6 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Leapt\\\\FroalaEditorBundle\\\\Tests\\\\LeaptFroalaEditorTestingKernel\\:\\:configureContainer\\(\\) is unused\\.$#"
+			count: 1
+			path: tests/LeaptFroalaEditorTestingKernel.php

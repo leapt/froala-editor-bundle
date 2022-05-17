@@ -3,6 +3,9 @@
 <phpunit
     bootstrap="tests/bootstrap.php"
 >
+    <php>
+        <env name="KERNEL_CLASS" value="Leapt\FroalaEditorBundle\Tests\LeaptFroalaEditorTestingKernel" />
+    </php>
     <testsuites>
         <testsuite name="LeaptFroalaEditorBundle Test Suite">
             <directory>./tests/</directory>

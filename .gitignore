@@ -48,3 +48,4 @@ Temporary Items
 .phpunit.result.cache
 composer.lock
 vendor
+/var

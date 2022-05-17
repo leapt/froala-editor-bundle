@@ -1,3 +1,9 @@
+1.2.0
+-----
+
+* Add PHP routing config
+* Rewrite services config with PHP
+
 1.1.0
 -----
 
