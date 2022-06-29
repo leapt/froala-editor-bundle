@@ -35,6 +35,8 @@
         "phpstan/phpstan": "^1.6.8",
         "phpstan/phpstan-deprecation-rules": "^1.0.0",
         "phpunit/phpunit": "^9.5.10",
+        "symfony/css-selector": "^5.4 || ^6.0",
+        "symfony/dom-crawler": "^5.4 || ^6.0",
         "symfony/yaml": "^5.4 || ^6.0"
     },
     "scripts": {
