@@ -39,11 +39,9 @@ jobs:
           extensions: zip
 
       - name: Install Symfony Flex
-        run: composer global require --no-progress --no-scripts --no-plugins symfony/flex
-
-      - name: Remove not compatible vendors
-        run: composer remove --no-update --dev friendsofphp/php-cs-fixer
-        if: matrix.symfony-version == '6.0.*'
+        run: |
+          composer config --global --no-plugins allow-plugins.symfony/flex true
+          composer global require --no-progress --no-scripts --no-plugins symfony/flex
 
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v1
