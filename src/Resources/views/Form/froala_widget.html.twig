@@ -53,47 +53,45 @@
 
     {# Load the editor. #}
     <script type="text/javascript">
-
-        {# Go. #}
-        const {{ id }}_function = function() {
-            (function(){
-                const editInstance = new FroalaEditor( "#{{ id }}",{
-                    {# Add license. #}
-                    {% if froala_serialNumber is defined %}
-                    key : "{{ froala_serialNumber }}",
-                {% endif %}
-                {% for option, value in froala_arrOption %}
-                    {{ option }} : {% include "@LeaptFroalaEditor/Form/value.html.twig" %}
-                {% endfor %}
-
-                events: {
-                    'image.error': function ( error ) {
-                        froalaDisplayError(  this, error );
-                    },
-                    'imageManager.error': function ( error ) {
-                        froalaDisplayError(  this, error );
-                    },
-                    'save.error': function ( error ) {
-                        froalaDisplayError(  this, error );
-                    },
-                    'file.error': function ( error, responses ) {
-                        froalaDisplayError(  this, error );
-                    },
-                    'video.error': function ( error, responses ) {
-                        froalaDisplayError(  this, error );
-                    }
-                    {% for event, func in froala_events %}
-                ,'{{ event }}': {{ func }}
+        if (typeof {{ id }}_function === 'undefined') {
+            const {{ id }}_function = function() {
+                (function(){
+                    const editInstance = new FroalaEditor( "#{{ id }}",{
+                        {# Add license. #}
+                        {% if froala_serialNumber is defined %}
+                        key : "{{ froala_serialNumber }}",
+                    {% endif %}
+                    {% for option, value in froala_arrOption %}
+                        {{ option }} : {% include "@LeaptFroalaEditor/Form/value.html.twig" %}
                     {% endfor %}
-                }})
-            })();
 
+                    events: {
+                        'image.error': function ( error ) {
+                            froalaDisplayError(  this, error );
+                        },
+                        'imageManager.error': function ( error ) {
+                            froalaDisplayError(  this, error );
+                        },
+                        'save.error': function ( error ) {
+                            froalaDisplayError(  this, error );
+                        },
+                        'file.error': function ( error, responses ) {
+                            froalaDisplayError(  this, error );
+                        },
+                        'video.error': function ( error, responses ) {
+                            froalaDisplayError(  this, error );
+                        }
+                        {% for event, func in froala_events %}
+                    ,'{{ event }}': {{ func }}
+                        {% endfor %}
+                    }})
+                })();
+            }
 
-        }
-
-        document.addEventListener("DOMContentLoaded", {{ id }}_function);
-        if (document.readyState === "interactive" || document.readyState === "complete" ) {
-            {{ id }}_function();
+            document.addEventListener("DOMContentLoaded", {{ id }}_function);
+            if (document.readyState === "interactive" || document.readyState === "complete" ) {
+                {{ id }}_function();
+            }
         }
     </script>
 
