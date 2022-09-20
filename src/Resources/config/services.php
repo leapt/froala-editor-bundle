@@ -10,6 +10,7 @@ use Leapt\FroalaEditorBundle\Service\OptionManager;
 use Leapt\FroalaEditorBundle\Service\PluginProvider;
 use Leapt\FroalaEditorBundle\Twig\FroalaExtension;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $container): void {

@@ -313,22 +313,22 @@ final class UConfiguration
     public static function getArrOption(): array
     {
         return array_merge(array_merge(
+            array_merge(
                 array_merge(
-                    array_merge(
-                        array_keys(self::OPTIONS_BOOLEAN),
-                        array_keys(self::OPTIONS_INTEGER)),
-                    array_keys(self::OPTIONS_STRING)),
-                array_keys(self::OPTIONS_ARRAY)),
+                    array_keys(self::OPTIONS_BOOLEAN),
+                    array_keys(self::OPTIONS_INTEGER)),
+                array_keys(self::OPTIONS_STRING)),
+            array_keys(self::OPTIONS_ARRAY)),
             array_keys(self::OPTIONS_OBJECT));
     }
 
     public static function getArrOptionCustom(): array
     {
         return array_merge(array_merge(
-                array_merge(
-                    array_keys(self::OPTIONS_BOOLEAN_CUSTOM),
-                    array_keys(self::OPTIONS_STRING_CUSTOM)),
-                array_keys(self::OPTIONS_ARRAY_CUSTOM)),
+            array_merge(
+                array_keys(self::OPTIONS_BOOLEAN_CUSTOM),
+                array_keys(self::OPTIONS_STRING_CUSTOM)),
+            array_keys(self::OPTIONS_ARRAY_CUSTOM)),
             array_keys(self::OPTIONS_OBJECT_CUSTOM));
     }
 
