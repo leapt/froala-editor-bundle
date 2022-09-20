@@ -1,7 +1,8 @@
-1.4.0
+1.3.1
 -----
 
 * Run CI against PHP 8.2
+* Don't register JS function if already loaded (may happen using symfony/ux-turbo)
 
 1.3.0
 -----
