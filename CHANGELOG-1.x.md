@@ -1,3 +1,8 @@
+1.3.2
+-----
+
+* File uploads: set status code & make it fail if file upload fails for some reason
+
 1.3.1
 -----
 
