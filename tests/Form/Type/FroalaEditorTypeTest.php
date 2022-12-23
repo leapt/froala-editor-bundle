@@ -91,8 +91,8 @@ final class FroalaEditorTypeTest extends TestCase
         }
 
         // Define some options for testing
-        $parameters[Configuration::NODE_ROOT . '.' . 'language'] = 'en';
-        $parameters[Configuration::NODE_ROOT . '.' . 'profiles'] = ['profile1' => ['language' => 'fr']];
+        $parameters[Configuration::NODE_ROOT . '.language'] = 'en';
+        $parameters[Configuration::NODE_ROOT . '.profiles'] = ['profile1' => ['language' => 'fr']];
 
         return new ParameterBag($parameters);
     }

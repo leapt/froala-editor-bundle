@@ -30,7 +30,7 @@ final class FroalaExtension extends AbstractExtension
 
         if ($includeCSS) {
             $basePath = $this->parameterBag->get(Configuration::NODE_ROOT . '.basePath');
-            $url = $this->packages->getUrl(trim($basePath, '/') . '/' . 'css/froala_style.min.css');
+            $url = $this->packages->getUrl(trim($basePath, '/') . '/css/froala_style.min.css');
             $str .= '<link href="' . $url . '" rel="stylesheet" type="text/css" />';
         }
 
