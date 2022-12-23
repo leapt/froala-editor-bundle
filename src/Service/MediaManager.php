@@ -84,6 +84,16 @@ final class MediaManager
             $response->setData([
                 'error' => 'No file received.',
             ]);
+            $response->setStatusCode(400);
+
+            return $response;
+        }
+
+        if (0 !== $file->getError()) {
+            $response->setData([
+                'error' => $file->getErrorMessage(),
+            ]);
+            $response->setStatusCode(400);
 
             return $response;
         }
@@ -92,6 +102,7 @@ final class MediaManager
             $response->setData([
                 'error' => 'File too big.',
             ]);
+            $response->setStatusCode(400);
 
             return $response;
         }
@@ -101,6 +112,7 @@ final class MediaManager
             $response->setData([
                 'error' => 'File not supported.',
             ]);
+            $response->setStatusCode(400);
 
             return $response;
         }
