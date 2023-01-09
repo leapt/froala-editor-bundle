@@ -82,7 +82,7 @@ final class MediaManager
         $file = $fileBag->get('file');
         if (null === $file) {
             $response->setData([
-                'error' => 'No file received.',
+                'error' => 'No file received. Maybe file size exceeded maximum file size allowed?',
             ]);
             $response->setStatusCode(400);
 
