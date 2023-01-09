@@ -66,20 +66,40 @@
                     {% endfor %}
 
                     events: {
-                        'image.error': function ( error ) {
-                            froalaDisplayError(  this, error );
+                        'image.error': function (error, response) {
+                            if (typeof froalaImageErrorEventHandler === 'function') {
+                                froalaImageErrorEventHandler(this, error, response);
+                            } else {
+                                froalaDisplayError(this, error, response);
+                            }
                         },
-                        'imageManager.error': function ( error ) {
-                            froalaDisplayError(  this, error );
+                        'imageManager.error': function (error, response) {
+                            if (typeof froalaImageManagerErrorEventHandler === 'function') {
+                                froalaImageManagerErrorEventHandler(this, error, response);
+                            } else {
+                                froalaDisplayError(this, error, response);
+                            }
                         },
-                        'save.error': function ( error ) {
-                            froalaDisplayError(  this, error );
+                        'save.error': function (error, response) {
+                            if (typeof froalaSaveErrorEventHandler === 'function') {
+                                froalaSaveErrorEventHandler(this, error, response);
+                            } else {
+                                froalaDisplayError(this, error, response);
+                            }
                         },
-                        'file.error': function ( error, responses ) {
-                            froalaDisplayError(  this, error );
+                        'file.error': function (error, response) {
+                            if (typeof froalaFileErrorEventHandler === 'function') {
+                                froalaFileErrorEventHandler(this, error, response);
+                            } else {
+                                froalaDisplayError(this, error, response);
+                            }
                         },
-                        'video.error': function ( error, responses ) {
-                            froalaDisplayError(  this, error );
+                        'video.error': function (error, response) {
+                            if (typeof froalaVideoErrorEventHandler === 'function') {
+                                froalaVideoErrorEventHandler(this, error, response);
+                            } else {
+                                froalaDisplayError(this, error, response);
+                            }
                         }
                         {% for event, func in froala_events %}
                     ,'{{ event }}': {{ func }}

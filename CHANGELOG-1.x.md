@@ -1,3 +1,10 @@
+1.4.0
+-----
+
+* File uploads: improve message when the request may be truncated
+* Error events: add response parameter to JS function call
+* Error events: allow to call different JS functions for each event
+
 1.3.2
 -----
 

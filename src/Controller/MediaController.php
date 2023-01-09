@@ -18,10 +18,10 @@ class MediaController
 
     public function uploadImage(Request $request): JsonResponse
     {
-        $path = $request->request->get('path');
-        $folder = $request->request->get('folder');
+        $path = $request->request->get('path', '');
+        $folder = $request->request->get('folder', '');
         $rootDir = $this->kernel->getProjectDir();
-        $publicDir = $request->request->get('public_dir');
+        $publicDir = $request->request->get('public_dir', '');
         $basePath = $request->getBasePath();
 
         return $this->mediaManager->uploadImage($request->files, $rootDir, $publicDir, $basePath, $folder, $path);
@@ -52,10 +52,10 @@ class MediaController
 
     public function uploadFile(Request $request): JsonResponse
     {
-        $path = $request->request->get('path');
-        $folder = $request->request->get('folder');
+        $path = $request->request->get('path', '');
+        $folder = $request->request->get('folder', '');
         $rootDir = $this->kernel->getProjectDir();
-        $publicDir = $request->request->get('public_dir');
+        $publicDir = $request->request->get('public_dir', '');
         $basePath = $request->getBasePath();
 
         return $this->mediaManager->uploadFile($request->files, $rootDir, $publicDir, $basePath, $folder, $path);
@@ -63,10 +63,10 @@ class MediaController
 
     public function uploadVideo(Request $request): JsonResponse
     {
-        $path = $request->request->get('path');
-        $folder = $request->request->get('folder');
+        $path = $request->request->get('path', '');
+        $folder = $request->request->get('folder', '');
         $rootDir = $this->kernel->getProjectDir();
-        $publicDir = $request->request->get('public_dir');
+        $publicDir = $request->request->get('public_dir', '');
         $basePath = $request->getBasePath();
 
         return $this->mediaManager->uploadVideo($request->files, $rootDir, $publicDir, $basePath, $folder, $path);
