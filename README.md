@@ -1,7 +1,7 @@
 # Leapt FroalaEditor bundle
 
 [![Package version](https://img.shields.io/packagist/v/leapt/froala-editor-bundle.svg)](https://packagist.org/packages/leapt/froala-editor-bundle)
-[![Build Status](https://img.shields.io/github/workflow/status/leapt/froala-editor-bundle/Continuous%20Integration/1.x)](https://github.com/leapt/froala-editor-bundle/actions?query=workflow%3A%22Continuous+Integration%22)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/leapt/froala-editor-bundle/continuous-integration.yml?branch=1.x)](https://github.com/leapt/froala-editor-bundle/actions?query=workflow%3A%22Continuous+Integration%22)
 [![Downloads](https://img.shields.io/packagist/dt/leapt/froala-editor-bundle.svg)](https://packagist.org/packages/leapt/froala-editor-bundle)
 [![PHP Version](https://img.shields.io/packagist/php-v/leapt/froala-editor-bundle.svg)](https://packagist.org/packages/leapt/froala-editor-bundle)
 [![Licence](https://img.shields.io/packagist/l/leapt/froala-editor-bundle.svg)](https://packagist.org/packages/leapt/froala-editor-bundle)
