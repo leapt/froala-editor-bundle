@@ -27,9 +27,9 @@ class LeaptFroalaEditorExtension extends Extension
     {
         // Load defined options in config file.
         foreach (UConfiguration::getArrOptionAll() as $option) {
-            if (false === empty($arrConfig[$option]) ||
-                false === $arrConfig[$option] ||
-                0 === $arrConfig[$option]
+            if (false === empty($arrConfig[$option])
+                || false === $arrConfig[$option]
+                || 0 === $arrConfig[$option]
             ) {
                 $container->setParameter(Configuration::NODE_ROOT . '.' . $option, $arrConfig[$option]);
             }
@@ -40,9 +40,9 @@ class LeaptFroalaEditorExtension extends Extension
         foreach ($arrConfig['profiles'] as $key => $profile) {
             $parameterProfiles[$key] = [];
             foreach ($profile as $optionKey => $optionValue) {
-                if (false === empty($optionValue) ||
-                    false === $optionValue ||
-                    0 === $optionValue
+                if (false === empty($optionValue)
+                    || false === $optionValue
+                    || 0 === $optionValue
                 ) {
                     $parameterProfiles[$key][$optionKey] = $optionValue;
                 }
