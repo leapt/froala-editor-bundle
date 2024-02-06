@@ -1,3 +1,10 @@
+1.5.0
+-----
+
+* Drop support for PHP < 8.2
+* Drop support for Symfony < 6.4
+* Add support for Symfony 7
+
 1.4.0
 -----
 

@@ -9,16 +9,16 @@ on:
 jobs:
   phpstan:
     name: PHPStan (PHP ${{ matrix.php-version }})
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     strategy:
       matrix:
         php-version:
-          - '8.1'
+          - '8.3'
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install PHP
         uses: shivammathur/setup-php@v2
@@ -29,7 +29,7 @@ jobs:
           extensions: zip
 
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@v1
+        uses: ramsey/composer-install@v2
 
       - name: Run PHPStan
         run: 'vendor/bin/phpstan analyse --error-format=checkstyle | cs2pr'

@@ -8,7 +8,7 @@
 
 ## Introduction
 
-This bundle aims to easily integrate & use the Froala editor in Symfony 5.4+/6.0+.
+This bundle aims to easily integrate & use the Froala editor in Symfony 6.4+/7.0+.
 
 This bundle is a maintained fork of the [KMSFroalaEditorBundle](https://github.com/froala/KMSFroalaEditorBundle).
 
@@ -45,8 +45,9 @@ The changelog is available here:
 
 ## Migration to Leapt Froala Editor bundle from KMS
 
-It now supports only Symfony 5.4+ & 6.0+, and PHP >= 8.0.
+It now supports only Symfony 6.4+ & 7.0+, and PHP >= 8.2.
 Symfony 5.3 is supported in v1.0.0, but its support has been dropped in v1.1.0.
+Symfony < 6.4 is supported in v1.4.0, but its support has been dropped in v1.5.0.
 
 Replace occurrences of "kms" by "leapt" everywhere (matching case: `KMS` becomes `Leapt` & `kms` becomes `leapt`).
 
