@@ -51,6 +51,11 @@ Symfony < 6.4 is supported in v1.4.0, but its support has been dropped in v1.5.0
 
 Replace occurrences of "kms" by "leapt" everywhere (matching case: `KMS` becomes `Leapt` & `kms` becomes `leapt`).
 
+## Available demo
+
+If you want to try the bundle before installing it in your own projects, you can run this demo project locally:
+https://github.com/leapt/demo
+
 ## Installation
 
 ### Step 1: Install the bundle using composer
