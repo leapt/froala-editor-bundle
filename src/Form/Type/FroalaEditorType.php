@@ -82,7 +82,7 @@ class FroalaEditorType extends AbstractType
 
         $arrPlugin = $this->pluginProvider->obtainArrPluginToInclude($arrPluginEnabled, $arrPluginDisabled);
 
-        $view->vars['froala_arrOption']['pluginsEnabled'] = $this->pluginProvider->obtainArrPluginCamelized($arrPlugin);
+        $view->vars['froala_arrOption']['pluginsEnabled'] = array_map(fn (string $plugin): string => 'trackChanges' === $plugin ? 'track_changes' : $plugin, $this->pluginProvider->obtainArrPluginCamelized($arrPlugin));
         $view->vars['froala_arrPluginJS'] = $this->pluginProvider->obtainArrPluginJS($arrPlugin);
         $view->vars['froala_arrPluginCSS'] = $this->pluginProvider->obtainArrPluginCSS($arrPlugin);
         $view->vars['froala_events'] = $arrEvent;

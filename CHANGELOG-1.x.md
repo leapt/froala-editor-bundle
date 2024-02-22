@@ -1,3 +1,8 @@
+1.6.0
+-----
+
+* Add Track changes plugin & options
+
 1.5.0
 -----
 

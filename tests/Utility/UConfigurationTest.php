@@ -18,7 +18,7 @@ final class UConfigurationTest extends TestCase
             $url = 'https://froala.com/wysiwyg-editor/docs/options/';
             $httpClient = HttpClient::create();
             $crawler = new Crawler($httpClient->request('GET', $url)->getContent());
-            $optionsFromDocs = $crawler->filter('.docs-data-list.block-box a');
+            $optionsFromDocs = $crawler->filter('.docs-data-list a.searchable');
             $registeredOptions = UConfiguration::getArrOptionAll();
             $proxyOrIgnoredOptions = ['Key', 'editor'];
             $missingOptions = [];
