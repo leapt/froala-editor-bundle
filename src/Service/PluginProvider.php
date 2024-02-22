@@ -48,6 +48,7 @@ final class PluginProvider
         'save'                => [self::KEY_CSS => 0, self::KEY_FOLDER => self::VALUE_PLUGINS],
         'special_characters'  => [self::KEY_CSS => 1, self::KEY_FOLDER => self::VALUE_PLUGINS],
         'table'               => [self::KEY_CSS => 1, self::KEY_FOLDER => self::VALUE_PLUGINS],
+        'track_changes'       => [self::KEY_CSS => 0, self::KEY_FOLDER => self::VALUE_PLUGINS],
         'url'                 => [self::KEY_CSS => 0, self::KEY_FOLDER => self::VALUE_PLUGINS],
         'video'               => [self::KEY_CSS => 1, self::KEY_FOLDER => self::VALUE_PLUGINS],
         'word_paste'          => [self::KEY_CSS => 0, self::KEY_FOLDER => self::VALUE_PLUGINS],
