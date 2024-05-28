@@ -87,6 +87,7 @@ final class UConfiguration
         'videoSplitHTML'                 => null,
         'videoTextNear'                  => null,
         'videoUpload'                    => null,
+        'wordCounterCount'               => null,
         'wordPasteKeepFormatting'        => null,
         'wordPasteModal'                 => null,
     ];
@@ -128,6 +129,7 @@ final class UConfiguration
         'typingTimer'                 => null,
         'videoDefaultWidth'           => null,
         'videoMaxSize'                => null,
+        'wordCounterMax'              => null,
         'zIndex'                      => null,
     ];
 
