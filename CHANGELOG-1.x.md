@@ -1,3 +1,8 @@
+1.7.0
+-----
+
+* Add Word Counter plugin options
+
 1.6.0
 -----
 
