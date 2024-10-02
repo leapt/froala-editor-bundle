@@ -58,7 +58,7 @@ class FroalaEditorType extends AbstractType
                     $options['froala_' . $profileKey] = $profileOption;
                 }
             } else {
-                throw new \InvalidArgumentException(sprintf('Unrecognized profile "%s". Available profiles are "%s".', $profile, implode('"", "', array_keys($profiles))));
+                throw new \InvalidArgumentException(\sprintf('Unrecognized profile "%s". Available profiles are "%s".', $profile, implode('"", "', array_keys($profiles))));
             }
         }
 
