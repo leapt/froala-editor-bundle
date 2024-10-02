@@ -40,7 +40,7 @@ class InstallCommand extends Command
 
         $path = (string) tempnam(sys_get_temp_dir(), 'froala-' . $tag . '.zip');
         if (!@file_put_contents($path, $zip)) {
-            throw new \RuntimeException(sprintf('Unable to write Froala ZIP archive to "%s".', $path));
+            throw new \RuntimeException(\sprintf('Unable to write Froala ZIP archive to "%s".', $path));
         }
 
         $output->writeln(' Ok.');
@@ -56,7 +56,7 @@ class InstallCommand extends Command
         $fileSystem->exists($outputPath);
 
         if ($fileSystem->exists($outputPath) && !$clear) {
-            $output->writeln(sprintf("\nThe directory \"%s\" already exists and the clear option is not enabled, aborting.", $outputPath));
+            $output->writeln(\sprintf("\nThe directory \"%s\" already exists and the clear option is not enabled, aborting.", $outputPath));
         } else {
             if (is_dir($outputPath)) {
                 $fileSystem->remove($outputPath);
@@ -65,11 +65,11 @@ class InstallCommand extends Command
 
             $zip = new \ZipArchive();
             if (true !== $zip->open($zipPath)) {
-                throw new \RuntimeException(sprintf('Cannot open zip file "%s".', $zipPath));
+                throw new \RuntimeException(\sprintf('Cannot open zip file "%s".', $zipPath));
             }
             for ($i = 0; $i < $zip->numFiles; ++$i) {
                 $filename = $zip->getNameIndex($i);
-                $zipFile = sprintf('zip://%s#%s', $zipPath, $filename);
+                $zipFile = \sprintf('zip://%s#%s', $zipPath, $filename);
                 // Remove the first directory (eg. "wysiwyg-editor-master") from the file path
                 $explodedPath = explode('/', $filename, 2);
                 $realFilePath = $explodedPath[1];

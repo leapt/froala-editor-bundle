@@ -31,7 +31,7 @@ final class UConfigurationTest extends TestCase
 
             self::assertSame([], $missingOptions);
         } catch (ClientException $e) {
-            $this->markTestSkipped(sprintf('Unable to retrieve options docs page: %s', $e->getMessage()));
+            $this->markTestSkipped(\sprintf('Unable to retrieve options docs page: %s', $e->getMessage()));
         }
     }
 }

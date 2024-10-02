@@ -65,7 +65,7 @@ final class MediaManager
      */
     private function obtainFolder(string $rootDir, string $publicDir, string $folder): string
     {
-        return sprintf('%s%s/%s', $rootDir, $publicDir, $folder);
+        return \sprintf('%s%s/%s', $rootDir, $publicDir, $folder);
     }
 
     private function obtainPath(string $basePath, string $path): string
