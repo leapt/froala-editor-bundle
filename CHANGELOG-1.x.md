@@ -2,6 +2,7 @@
 -----
 
 * Fix DI deprecation
+* Test against PHP 8.4 & Symfony 7.1
 
 1.7.0
 -----

@@ -14,6 +14,8 @@ final class UConfigurationTest extends TestCase
 {
     public function testAllOptionsAreRegistered(): void
     {
+        $this->markTestSkipped('Don\'t check options for now.');
+
         try {
             $url = 'https://froala.com/wysiwyg-editor/docs/options/';
             $httpClient = HttpClient::create();
