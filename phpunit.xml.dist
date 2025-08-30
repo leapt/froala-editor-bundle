@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit
-    bootstrap="tests/bootstrap.php"
->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         cacheDirectory=".phpunit.cache"
+         executionOrder="depends,defects"
+         beStrictAboutOutputDuringTests="true"
+         displayDetailsOnPhpunitDeprecations="true"
+         colors="true"
+         failOnRisky="true"
+         failOnWarning="true">
     <php>
         <env name="KERNEL_CLASS" value="Leapt\FroalaEditorBundle\Tests\LeaptFroalaEditorTestingKernel" />
     </php>
     <testsuites>
         <testsuite name="LeaptFroalaEditorBundle Test Suite">
-            <directory>./tests/</directory>
+            <directory suffix="Test.php">tests</directory>
         </testsuite>
     </testsuites>
+
+    <coverage/>
+
+    <source>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </source>
 </phpunit>
