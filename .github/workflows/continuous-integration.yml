@@ -9,7 +9,7 @@ on:
 jobs:
   phpunit:
     name: PHPUnit (PHP ${{ matrix.php-version }} - Symfony ${{ matrix.symfony-version }})
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     env:
       SYMFONY_REQUIRE: ${{ matrix.symfony-version }}
 
@@ -21,11 +21,11 @@ jobs:
           - '8.4'
         symfony-version:
           - '6.4.*'
-          - '7.1.*'
+          - '7.3.*'
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 2
 
@@ -42,11 +42,11 @@ jobs:
           composer global require --no-progress --no-scripts --no-plugins symfony/flex
 
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
 
       - name: Run PHPUnit
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload to Codecov
-        uses: codecov/codecov-action@v2
-        if: matrix.php-version == '8.3' && matrix.symfony-version == '6.4.*'
+        uses: codecov/codecov-action@v5
+        if: matrix.php-version == '8.4' && matrix.symfony-version == '6.4.*'
