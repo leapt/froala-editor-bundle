@@ -65,7 +65,7 @@ final class FroalaEditorTypeTest extends TestCase
         $formType = new FroalaEditorType(
             $this->getParameterBag(),
             new OptionManager($router),
-            new PluginProvider()
+            new PluginProvider(),
         );
 
         $factory = Forms::createFormFactoryBuilder()
@@ -78,11 +78,15 @@ final class FroalaEditorTypeTest extends TestCase
     private function getParameterBag(): ParameterBag
     {
         $array = array_merge(
-            UConfiguration::OPTIONS_STRING, UConfiguration::OPTIONS_STRING_CUSTOM,
-            UConfiguration::OPTIONS_BOOLEAN, UConfiguration::OPTIONS_BOOLEAN_CUSTOM,
-            UConfiguration::OPTIONS_ARRAY, UConfiguration::OPTIONS_ARRAY_CUSTOM,
-            UConfiguration::OPTIONS_OBJECT, UConfiguration::OPTIONS_OBJECT_CUSTOM,
-            UConfiguration::OPTIONS_INTEGER
+            UConfiguration::OPTIONS_STRING,
+            UConfiguration::OPTIONS_STRING_CUSTOM,
+            UConfiguration::OPTIONS_BOOLEAN,
+            UConfiguration::OPTIONS_BOOLEAN_CUSTOM,
+            UConfiguration::OPTIONS_ARRAY,
+            UConfiguration::OPTIONS_ARRAY_CUSTOM,
+            UConfiguration::OPTIONS_OBJECT,
+            UConfiguration::OPTIONS_OBJECT_CUSTOM,
+            UConfiguration::OPTIONS_INTEGER,
         );
         $parameters = [];
 

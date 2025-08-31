@@ -12,9 +12,7 @@ use Twig\TwigFunction;
 
 final class FroalaExtension extends AbstractExtension
 {
-    public function __construct(private ParameterBagInterface $parameterBag, private Packages $packages)
-    {
-    }
+    public function __construct(private ParameterBagInterface $parameterBag, private Packages $packages) {}
 
     public function getFunctions(): array
     {
