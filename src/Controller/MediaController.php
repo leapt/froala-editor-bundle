@@ -12,9 +12,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 class MediaController
 {
-    public function __construct(private MediaManager $mediaManager, private KernelInterface $kernel)
-    {
-    }
+    public function __construct(private MediaManager $mediaManager, private KernelInterface $kernel) {}
 
     public function uploadImage(Request $request): JsonResponse
     {

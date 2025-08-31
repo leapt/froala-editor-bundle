@@ -7,8 +7,8 @@ on:
     branches: ['1.x']
 
 jobs:
-  php-cs-fixer:
-    name: PHP CS Fixer (PHP ${{ matrix.php-version }})
+  easy-coding-standard:
+    name: Easy Coding Standard (PHP ${{ matrix.php-version }})
     runs-on: ubuntu-24.04
 
     strategy:
@@ -31,5 +31,5 @@ jobs:
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v3
 
-      - name: Run PHP CS Fixer
-        run: 'vendor/bin/php-cs-fixer fix --dry-run --format=checkstyle | cs2pr'
+      - name: Run Easy Coding Standard
+        run: 'vendor/bin/ecs --output-format=checkstyle | cs2pr'

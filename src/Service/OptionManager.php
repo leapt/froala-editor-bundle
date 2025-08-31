@@ -8,9 +8,7 @@ use Symfony\Component\Routing\RouterInterface;
 
 final class OptionManager
 {
-    public function __construct(private RouterInterface $router)
-    {
-    }
+    public function __construct(private RouterInterface $router) {}
 
     /**
      * Prepare options before building view.

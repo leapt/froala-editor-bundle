@@ -31,13 +31,13 @@
         "twig/twig": "^3.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.86.0",
         "phpstan/phpstan": "^2.1.22",
         "phpstan/phpstan-deprecation-rules": "^2.0.3",
         "phpunit/phpunit": "^11.5.35",
         "symfony/css-selector": "^6.4 || ^7.0 || ^8.0",
         "symfony/dom-crawler": "^6.4 || ^7.0 || ^8.0",
-        "symfony/yaml": "^6.4 || ^7.0 || ^8.0"
+        "symfony/yaml": "^6.4 || ^7.0 || ^8.0",
+        "symplify/easy-coding-standard": "^12.5.24"
     },
     "scripts": {
         "ci": [
@@ -45,8 +45,8 @@
             "@phpstan",
             "vendor/bin/phpunit --colors=auto"
         ],
-        "cs:dry": "php-cs-fixer fix --diff --dry-run --no-interaction --ansi",
-        "cs:fix": "php-cs-fixer fix --ansi",
+        "cs:dry": "vendor/bin/ecs",
+        "cs:fix": "vendor/bin/ecs --fix",
         "phpstan": "vendor/bin/phpstan analyse --ansi"
     },
     "autoload": {
