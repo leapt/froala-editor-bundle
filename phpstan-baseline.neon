@@ -1,11 +1,22 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Leapt\\\\FroalaEditorBundle\\\\Tests\\\\LeaptFroalaEditorTestingKernel\\:\\:configureContainer\\(\\) is unused\\.$#"
+			rawMessage: 'Method Leapt\FroalaEditorBundle\Tests\LeaptFroalaEditorTestingKernel::configureContainer() is unused.'
+			identifier: method.unused
 			count: 1
 			path: tests/LeaptFroalaEditorTestingKernel.php
 
 		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			rawMessage: '''
+				Return type of method Leapt\FroalaEditorBundle\Tests\LeaptFroalaEditorTestingKernel::registerBundles() has typehint with deprecated interface Symfony\Component\HttpKernel\Bundle\BundleInterface:
+				since Symfony 8.1, use Symfony\Component\DependencyInjection\Kernel\BundleInterface instead
+			'''
+			identifier: return.deprecatedInterface
+			count: 1
+			path: tests/LeaptFroalaEditorTestingKernel.php
+
+		-
+			rawMessage: Unreachable statement - code above always terminates.
+			identifier: deadCode.unreachable
 			count: 1
 			path: tests/Utility/UConfigurationTest.php
