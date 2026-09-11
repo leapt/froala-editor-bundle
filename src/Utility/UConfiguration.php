@@ -390,8 +390,7 @@ final class UConfiguration
         $array = array_merge(self::OPTIONS_ARRAY, self::OPTIONS_ARRAY_CUSTOM);
 
         foreach ($array as $option => $defaultValue) {
-            $nodeBuilder =
-                $nodeBuilder->arrayNode($option)->prototype('variable')->end();
+            $nodeBuilder = $nodeBuilder->arrayNode($option)->prototype('variable')->end();
 
             if ($addDefaultValue) {
                 $nodeBuilder = $nodeBuilder->defaultValue($defaultValue);
@@ -406,8 +405,7 @@ final class UConfiguration
         $array = array_merge(self::OPTIONS_OBJECT, self::OPTIONS_OBJECT_CUSTOM);
 
         foreach ($array as $option => $defaultValue) {
-            $nodeBuilder =
-                $nodeBuilder->arrayNode($option)->prototype('variable')->end();
+            $nodeBuilder = $nodeBuilder->arrayNode($option)->prototype('variable')->end();
 
             if ($addDefaultValue) {
                 $nodeBuilder = $nodeBuilder->defaultValue($defaultValue);
