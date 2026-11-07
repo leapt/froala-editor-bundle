@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   phpunit:
-    name: PHPUnit (PHP ${{ matrix.php-version }} - Symfony ${{ matrix.symfony-version }})
+    name: PHPUnit (PHP ${{ matrix.php-version }} - Symfony ${{ matrix.symfony-version }}${{ matrix.dependency-versions == 'lowest' && ' - lowest deps' || '' }})
     runs-on: ubuntu-24.04
     continue-on-error: ${{ matrix.continue-on-error || false }}
     env:
@@ -24,21 +24,25 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - '8.2'
-          - '8.3'
           - '8.4'
           - '8.5'
+          - '8.6'
         symfony-version:
-          - '6.4.*'
           - '7.4.*'
+          - '8.1.*'
+        dependency-versions:
+          - highest
         include:
-          - php-version: '8.4'
-            symfony-version: '8.0.*'
+          - php-version: '8.2'
+            symfony-version: '6.4.*'
+            dependency-versions: highest
           - php-version: '8.5'
-            symfony-version: '8.0.*'
-          - php-version: '8.5'
-            symfony-version: '8.1.*@dev'
+            symfony-version: '8.2.*@dev'
+            dependency-versions: highest
             continue-on-error: true
+          - php-version: '8.4'
+            symfony-version: '7.4.*'
+            dependency-versions: lowest
 
     steps:
       - name: Checkout code
@@ -48,7 +52,7 @@ jobs:
           fetch-depth: 2
 
       - name: Install PHP with pcov
-        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
           coverage: pcov
           php-version: ${{ matrix.php-version }}
@@ -60,10 +64,12 @@ jobs:
 
       - name: Install Composer dependencies
         uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
+        with:
+          dependency-versions: ${{ matrix.dependency-versions }}
 
       - name: Run PHPUnit
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload to Codecov
         uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
-        if: matrix.php-version == '8.4' && matrix.symfony-version == '7.4.*'
+        if: matrix.php-version == '8.4' && matrix.symfony-version == '7.4.*' && matrix.dependency-versions == 'highest'

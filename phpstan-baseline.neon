@@ -1,12 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			rawMessage: 'Method Leapt\FroalaEditorBundle\Tests\LeaptFroalaEditorTestingKernel::configureContainer() is unused.'
-			identifier: method.unused
-			count: 1
-			path: tests/LeaptFroalaEditorTestingKernel.php
-
-		-
 			rawMessage: '''
 				Return type of method Leapt\FroalaEditorBundle\Tests\LeaptFroalaEditorTestingKernel::registerBundles() has typehint with deprecated interface Symfony\Component\HttpKernel\Bundle\BundleInterface:
 				since Symfony 8.1, use Symfony\Component\DependencyInjection\Kernel\BundleInterface instead
